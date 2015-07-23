@@ -11,7 +11,7 @@ class {'dashing':
     enable               => true,
 }
 dashing::instance {'ceph':
-  targz            => 'https://github.com/simpsonjulian/dashing-demo/tarball/master',
+  targz            => 'https://github.com/meadhikari/dashing_deploydemo/tarball/master',
   dashing_port     => '3030',
   dashing_dir      => "$dashing::dashing_basepath/$name",
   strip_parent_dir => true,
