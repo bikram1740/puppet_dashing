@@ -17,8 +17,8 @@ dashing::instance {'ceph':
   strip_parent_dir => true,
 }
 exec { "bundle install":
-    command => "/usr/bin/bundle install",
-    path    => "/usr/local/bin/:/bin/",
+    command => "bundle install",
+    path    => "/usr/bin/:/bin/",
     cwd => "/usr/share/dashing/main",
     notify => Service["dashing"]
 }
