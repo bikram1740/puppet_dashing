@@ -40,7 +40,7 @@ define dashing::instance (
     $strip_parent_cmd = '--strip-components=1'
   }
   exec {"dashing-get-$name":
-    command => "/usr/bin/wget $targz -O /tmp/$name.tar.gz; /bin/tar -zxvf /tmp/$name.tar.gz -C $dashing_dir $strip_parent_cmd; /bin/rm /tmp/$name.tar.gz",
+    command => "/bin/mkdir -p /usr/share/dashing/main; /bin/rm -rf /usr/share/dashing/main/*; sudo /bin/cp -r /etc/puppet/modules/dashing/files/dashboard/* /usr/share/dashing/main/",
     unless  => "/bin/ls $dashing_dir/dashboards",
     notify  => Service[$dashing::service_name],
   }

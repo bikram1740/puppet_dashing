@@ -11,7 +11,7 @@ class {'dashing':
     enable               => true,
 }
 dashing::instance {'ceph':
-  targz            => 'puppet:///modules/dashing/dashboard.tar.gz',
+  targz            => 'puppet:///modules/dashing/dashboard',
   dashing_port     => '3030',
   dashing_dir      => "$dashing::dashing_basepath/$name",
   strip_parent_dir => true,
