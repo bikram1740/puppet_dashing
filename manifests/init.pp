@@ -22,3 +22,27 @@ exec { "bundle install":
     cwd => "/usr/share/dashing/main",
     notify => Service["dashing"]
 }
+class { 'nodejs':
+  version => 'stable',
+}
+file { "/opt/aws-dashing/":
+	ensure  => present,
+    mode   => 755,
+    owner  => root,
+    group  => root,
+    recurse => true,
+    source => "puppet:///modules/nodejs/aws-dashing/"
+}
+file { '/etc/init.d/nodedashing':
+   ensure => 'present',
+   owner  => 'root',
+   group  => 'root',
+   mode   => '0755',
+   source => "puppet:///modules/nodejs/aws-dashing/nodedashing",
+    notify    => Service['nodedashing'], 
+
+}
+service { 'nodedashing' :
+      ensure    => running,
+      hasstatus => false
+}
