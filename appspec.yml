@@ -11,4 +11,6 @@ hooks:
   AfterInstall:
     - location: scripts/runpuppet.sh
       runas: root
+      timeout: 9600
+
 
